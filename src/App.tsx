@@ -1,45 +1,80 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { ConfigProvider, Spin } from 'antd';
+import { createElement, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import styles from './app.module.less';
+import { routeConfig } from '@/route/index';
+import zhCN from 'antd/lib/locale/zh_CN';
+import Login from './pages/login';
+import Home from './pages/home';
+import Error404 from './components/error/404';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <ConfigProvider csp={{ nonce: 'YourNonceCode' }} locale={zhCN}>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            <Suspense
+              fallback={
+                <div className={styles.example}>
+                  <Spin size="large" />
+                </div>
+              }
+            >
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Suspense
+              fallback={
+                <div className={styles.example}>
+                  <Spin size="large" />
+                </div>
+              }
+            >
+              <Home />
+            </Suspense>
+          }
+        >
+          {routeConfig.map((p) => (
+            <Route
+              key={p.name}
+              path={p.path}
+              element={
+                <Suspense
+                  fallback={
+                    <div className={styles.example}>
+                      <Spin size="large" />
+                    </div>
+                  }
+                >
+                  {createElement(p.component as any)}
+                </Suspense>
+              }
+            />
+          ))}
+        </Route>
+        <Route
+          path="*"
+          element={
+            <Suspense
+              fallback={
+                <div className={styles.example}>
+                  <Spin size="large" />
+                </div>
+              }
+            >
+              <Error404 />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </ConfigProvider>
+  );
 }
 
-export default App
+export default App;

@@ -22,7 +22,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@/': resolve('src'),
+      '@': resolve('src'),
     },
   },
   server: {
