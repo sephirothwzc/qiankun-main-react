@@ -19,7 +19,7 @@ export default {
         component: './Admin',
         routes: [
           {
-            path: '/admin/sub-page1',
+            path: '/digital-marketing',
             name: '一级页面',
             icon: <CrownOutlined />,
             component: './Welcome',

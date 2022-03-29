@@ -33,9 +33,9 @@ export const MicroApp: Array<MicroAppType> = [
     /**
      * 数字化营销
      */
-    name: 'Digital marketing', // app name registered
+    name: 'digital-marketing', // app name registered
     entry: String(import.meta.env.VITE_DIGITAL_MARKETING),
-    container: DEFAULT_CONTAINER_ID,
+    container: `#${DEFAULT_CONTAINER_ID}`,
     activeRule: '/digital-marketing',
   },
   // {

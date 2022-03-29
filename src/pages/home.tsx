@@ -1,4 +1,4 @@
-import { FC, useEffect, useLayoutEffect } from 'react';
+import { FC, useLayoutEffect } from 'react';
 import { useImmer } from 'use-immer';
 import { PageContainer, ProSettings, SettingDrawer } from '@ant-design/pro-layout';
 import ProLayout from '@ant-design/pro-layout';
@@ -20,7 +20,7 @@ const Home: FC = () => {
   /**
    * todo: only one
    */
-  useEffect(() => {
+  useLayoutEffect(() => {
     registerMicroApps(MicroApp);
     start();
   }, []);

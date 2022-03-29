@@ -42,6 +42,20 @@ function App() {
           }
         ></Route>
         <Route
+          path="/digital-marketing"
+          element={
+            <Suspense
+              fallback={
+                <div className={styles.example}>
+                  <Spin size="large" />
+                </div>
+              }
+            >
+              <Home />
+            </Suspense>
+          }
+        ></Route>
+        <Route
           path="*"
           element={
             <Suspense
