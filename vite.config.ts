@@ -21,9 +21,13 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      '@': resolve('src'),
-    },
+    alias: [
+      {
+        find: /^@\//,
+        replacement: resolve('src/'),
+      },
+      { find: /^~/, replacement: '' },
+    ],
   },
   server: {
     port: 8099,

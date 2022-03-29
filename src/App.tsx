@@ -7,6 +7,8 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import Login from './pages/login';
 import Home from './pages/home';
 import Error404 from './components/error/404';
+import 'antd/dist/antd.less';
+import '@ant-design/pro-form/dist/form.less';
 
 function App() {
   return (
