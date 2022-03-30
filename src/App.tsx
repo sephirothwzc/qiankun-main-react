@@ -42,7 +42,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/digital-marketing"
+          path="/digital-marketing/*"
           element={
             <Suspense
               fallback={

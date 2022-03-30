@@ -8,6 +8,7 @@ import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { registerMicroApps, start } from 'qiankun';
 import { DEFAULT_CONTAINER_ID, MicroApp } from './components/micro-app';
+import { Link, useLocation } from 'react-router-dom';
 
 /**
  * 主页
@@ -15,8 +16,8 @@ import { DEFAULT_CONTAINER_ID, MicroApp } from './components/micro-app';
  */
 const Home: FC = () => {
   const [settings, setSetting] = useImmer<Partial<ProSettings> | undefined>({ fixSiderbar: true });
-  const [pathname, setPathname] = useImmer('/welcome');
-
+  // const [pathname, setPathname] = useImmer('/welcome');
+  const { pathname } = useLocation();
   /**
    * todo: only one
    */
@@ -34,7 +35,7 @@ const Home: FC = () => {
       <ProLayout
         {...defaultProps}
         location={{
-          pathname,
+          pathname: pathname || '/welcome',
         }}
         waterMarkProps={{
           content: String(import.meta.env.VITE_PRO_LAYOUT_WATERMARKPROPS),
@@ -53,13 +54,14 @@ const Home: FC = () => {
         }}
         onMenuHeaderClick={(e) => console.log(e)}
         menuItemRender={(item, dom) => (
-          <a
-            onClick={() => {
-              setPathname(item.path || '/welcome');
-            }}
-          >
-            {dom}
-          </a>
+          // <a
+          //   onClick={() => {
+          //     setPathname(item.path || '/welcome');
+          //   }}
+          // >
+          //   {dom}
+          // </a>
+          <Link to={String(item.path)}>{dom}</Link>
         )}
         rightContentRender={() => (
           <div>

@@ -1,6 +1,8 @@
-import React from 'react';
 import { SmileOutlined, CrownOutlined, TabletOutlined, AntDesignOutlined } from '@ant-design/icons';
 
+/**
+ * path 对应爆米花
+ */
 export default {
   route: {
     path: '/',
@@ -12,17 +14,16 @@ export default {
         component: './Welcome',
       },
       {
-        path: '/admin',
-        name: '管理页',
+        path: '/digital-marketing',
+        name: '数字化营销',
         icon: <CrownOutlined />,
-        access: 'canAdmin',
-        component: './Admin',
+        // component: './Welcome',
         routes: [
           {
-            path: '/digital-marketing',
-            name: '一级页面',
+            path: '/digital-marketing/feedback',
+            name: '意见反馈',
             icon: <CrownOutlined />,
-            component: './Welcome',
+            // component: './Welcome',
           },
           {
             path: '/admin/sub-page2',
