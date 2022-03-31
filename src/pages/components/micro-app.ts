@@ -1,3 +1,5 @@
+import shared from '@/qiankun/shared';
+
 /**
  * 类型
  */
@@ -18,6 +20,10 @@ export type MicroAppType = {
    * rule : /yourActiveRule
    */
   activeRule: string;
+  /**
+   * 参数
+   */
+  props: any;
 };
 
 /**
@@ -37,6 +43,8 @@ export const MicroApp: Array<MicroAppType> = [
     entry: String(import.meta.env.VITE_DIGITAL_MARKETING),
     container: `#${DEFAULT_CONTAINER_ID}`,
     activeRule: '/digital-marketing',
+    // 通过 props 将 shared 传递给子应用
+    props: { shared },
   },
   // {
   //   name: 'vue app',

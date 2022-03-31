@@ -17,3 +17,5 @@ const setToken = (token: string): void => {
   // 将 token 的值记录在 store 中
   actions[LOGIN_ACTION.LOGIN]({ token });
 };
+
+export default { getToken, setToken };
