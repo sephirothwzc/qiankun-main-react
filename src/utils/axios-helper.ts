@@ -14,7 +14,7 @@ const service = axios.create({
 // http request 拦截器
 service.interceptors.request.use(
   (config) => {
-    //如果存在jwt，则将jwt添加到每次请求之中..
+    //如果存在jwt，则将jwt添加到每次请求之中
     if (store.getState().login?.appUser?.token) {
       config.params = {
         ...config.params,
